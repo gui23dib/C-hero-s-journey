@@ -13,14 +13,14 @@ int main(){
     int dice;
     }player, enemy;
 
-    player.dex=3;
-    player.str=3;
-    player.con=3;
-    player.hp=6+player.con;
-    enemy.dex=4;
-    enemy.str=2;
-    enemy.con=1;
-    enemy.hp=6+enemy.con;
+    player.dex = 1;
+    player.str = 1;
+    player.con = 1;
+    player.hp = 6 + player.con;
+    enemy.dex = 1;
+    enemy.str = 1;
+    enemy.con = 1;
+    enemy.hp = 4 + enemy.con;
 
 
     int turn = 1; //VAR DE CONTAGEM DE TURNOS
@@ -63,6 +63,38 @@ int main(){
         printf("HP GOBLIN: %i\n", enemy.hp);
     }
 
+
+    int p_decision; //VARIAVEL DE ESCOLHA
     printf("\n====== FIM COMBATE ======\n\n");
     //ALA DE RECOMPENSAS EM ATRIBUTO
+    printf("Escolhas sua recompensa:\n");
+    printf("\t1 - Forca\n");
+    printf("\t2 - Velocidade\n");
+    printf("\t3 - Resistencia\n");
+    printf("\t4 - Cura\n"); //DECISAO EM TODA BATALHA OPCAO DE CURA OU ATAQUE (AINDA NAO FEITO)
+
+    scanf("%i", &p_decision);
+
+    switch (p_decision){
+    case 1:
+        player.str += ((rand()%3)+1);
+        break;
+    case 2:
+        player.dex += ((rand()%3)+1);
+        break;
+    case 3:
+        player.con += ((rand()%3)+1);
+        break;
+    case 4:
+        player.hp += ((rand()%3)+1);
+        break;
+    } //MUDANCA DAS VARIAVES DE ATT
+
+
+    printf("\n====== SEU GUERREIRO ======\n");
+    printf("\tFORCA: <%i>\n\tVELOCIDADE: <%i>\n\tRESISTENCIA: <%i>\n\tHP: <%i>\n", player.str, player.dex, player.con, player.hp);//PRINTF DE VERIFICACAO DE ATRIBUTOS
+    printf("\n\n Deseja continuar o jogo? \n\t1 - Sim \n\t2 - Nao\n");
+    scanf("%i", &p_decision);
+    if(p_decision == 2)
+        return 0;
 }
