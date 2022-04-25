@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
 
 int main(){
     srand(time(NULL));
@@ -13,9 +14,11 @@ int main(){
     int dice;
     }player, enemy;
 
-    player.dex = 1;
-    player.str = 1;
-    player.con = 1;
+    char enemy_name[18] = "";
+
+    player.dex = 2;
+    player.str = 2;
+    player.con = 2;
     player.hp = 6 + player.con;
 
     int points = 0; //TOTAL DE DANO CAUSADO
@@ -24,7 +27,6 @@ int main(){
     for(;;){ //LOOP INFINITO PARA CONTINUIDADE DO JOGO
     battles ++;
 
-
     printf("============== INIMIGO %i ==============\n\b", battles);
     switch (battles){
     case 1:
@@ -32,42 +34,49 @@ int main(){
         enemy.str = 1;
         enemy.con = 1;
         enemy.hp = 4 + enemy.con;
+        strcpy(enemy_name, "Goblin");
         break;
     case 2:
         enemy.dex = 2;
         enemy.str = 0;
         enemy.con = 4;
         enemy.hp = 6 + enemy.con;
+        strcpy(enemy_name, "Troll");
         break;
     case 3:
         enemy.dex = 3;
         enemy.str = -1;
         enemy.con = 0;
         enemy.hp = 6 + enemy.con;
+        strcpy(enemy_name, "Kobold");
         break;
     case 4:
         enemy.dex = 2;
         enemy.str = 2;
         enemy.con = 3;
         enemy.hp = 3 + enemy.con;
+        strcpy(enemy_name, "Corvo amaldicoado");
         break;
     case 5:
         enemy.dex = 4;
         enemy.str = 1;
         enemy.con = 2;
         enemy.hp = 4 + enemy.con;
+        strcpy(enemy_name, "Esqueleto");
         break;
     case 6:
         enemy.dex = 6;
         enemy.str = 6;
         enemy.con = 6;
         enemy.hp = 4 + enemy.con;
+        strcpy(enemy_name, "Guardiao");
         break;
     default:
         enemy.dex = 6 + battles;
         enemy.str = 6 + battles;
         enemy.con = 6 + battles;
         enemy.hp = 6 + enemy.con + battles;
+        strcpy(enemy_name, "Fantasma");
         break;
 
     }
@@ -82,19 +91,19 @@ int main(){
         if ((rand()%6)+1<=player.dex){ //ACERTO DO GOLPE
 
             damage = ((rand()%6)+1) + player.str; //CONTAGEM DE DANO
-            printf("Voce acerta o 'goblin' causando %i de dano!\n", damage);
+            printf("Voce acerta o %s causando %i de dano!\n", enemy_name, damage);
             enemy.hp -= damage; //SUBTRACAO DA VIDA
             points += damage; //ADICAO DOS PONTOS
 
             if((rand()%6)+1<=enemy.dex){ //ACERTO DO INIMIGO
 
                 damage = ((rand()%6)+1) + enemy.str; //CONTAGEM DE DANO
-                printf("O 'goblin' acerta causando %i de dano!\n", damage);
+                printf("O %s acerta causando %i de dano!\n", enemy_name, damage);
                 player.hp -= damage; //SUBTRACAO DA VIDA
 
             } else { //ERRO DO INIMIGO
 
-                printf("'Goblin' errou!\n");
+                printf("%s errou!\n", enemy_name);
 
             }
 
@@ -105,12 +114,12 @@ int main(){
             if((rand()%6)+1<=enemy.dex){ //ACERTO DO INIMIGO
 
                 damage = ((rand()%6)+1) + enemy.str; //CONTAGEM DE DANO
-                printf("O 'goblin' acerta causando %i de dano!\n", damage);
+                printf("O %s acerta causando %i de dano!\n", enemy_name, damage);
                 player.hp -= damage; //SUBTRACAO DA VIDA
 
             } else { //ERRO DO INIMIGO
 
-                printf("'Goblin' errou!\n");
+                printf("%s errou!\n", enemy_name);
 
             }
         }
