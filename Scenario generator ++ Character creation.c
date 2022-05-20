@@ -27,7 +27,7 @@ int character_costumization(){
 
     player.att_points = 15; //DISTRIBUICAO ADICIONAL PARA ATT
 
-    //ATRIBUTOS
+    //ATRIBUTOS BASE = 5
     player.att_str = 5;
     player.att_dex = 5;
     player.att_con = 5;
@@ -37,18 +37,18 @@ int character_costumization(){
 
 
     printf("Digite o nome de seu guerreiro: ");
-    scanf("%s", &player_name);
+    scanf("%s", &player_name); //NOME
     printf("\n");
 
     printf("Seja bem vindo %s, para comecar o jogo precisamos saber um pouco mais sobre voce...\n", player_name);
 
     printf("Qual e a sua cor preferida? \n");
-    scanf("%s", &player.fav_color);
+    scanf("%s", &player.fav_color); //COR
     printf("\n");
 
     printf("Legal!!! eu tambem gosto muito de %s! \n", player.fav_color);
     printf("e sua ""coisa"" favorita? \n");
-    scanf("%s", &player.fav_item);
+    scanf("%s", &player.fav_item); //ITEM
     printf("\n");
 
     printf("hmmm... entao %s... uma escolha interessante\n");
@@ -190,9 +190,6 @@ int character_costumization(){
                 }
 
             break;
-
-            default:
-            break;
         }
     }
 
@@ -218,7 +215,6 @@ int character_costumization(){
         printf("===========================\n\n");
 
 return 0;
-
 }
 
 int trade_decision(){
